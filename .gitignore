@@ -361,3 +361,29 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+*.cache
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet
+packages/
+
+# Environment variables
+.env
+
+# Azure
+.azure/
