@@ -384,6 +384,9 @@ packages/
 
 # Environment variables
 .env
+.env.local
 
 # Azure
-.azure/
+.azure/appsettings.*.json
+appsettings.Development.json
+user-secrets.json
