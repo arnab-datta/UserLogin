@@ -11,10 +11,12 @@ namespace UserLogin.Controllers
     public class CrudController : ControllerBase
     {
         private readonly DbService _dbService;
+        private readonly FunctionalService _functionalService;
 
-        public CrudController(DbService dbService)
+        public CrudController(DbService dbService, FunctionalService functionalService)
         {
             _dbService = dbService;
+            _functionalService = functionalService;
         }
 
         [HttpPost]
@@ -22,7 +24,8 @@ namespace UserLogin.Controllers
         {
             try {
                 var result = await _dbService.AddInfoToDb(us);
-                return Ok(result);
+                return Ok(_functionalService.ConvertDataTable(result));
+
             }
             catch (Exception ex) {
                 return StatusCode(500, ex.Message);

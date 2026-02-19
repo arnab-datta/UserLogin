@@ -34,6 +34,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<DbService>();
+builder.Services.AddScoped<FunctionalService>();
 
 var app = builder.Build();
 
