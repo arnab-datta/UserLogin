@@ -32,5 +32,21 @@ namespace UserLogin.Controllers
             }
             
         }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> EditUserBasicInfo(UserDataModel us)
+        {
+            try
+            {
+                var result = await _dbService.AddInfoToDb(us);
+                return Ok(_functionalService.ConvertDataTable(result));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
     }
 }

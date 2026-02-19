@@ -39,7 +39,49 @@ namespace UserLogin.Services
             dt.Load(reader);
             return dt;
         }
-            
-        
+
+        public async Task<DataTable> EditUserBasicInfo(UserDataModel us, int userId)
+        {
+            DataTable dt = new DataTable();
+
+            using var sqlConnection = new MySqlConnection(_connectionString);
+            await sqlConnection.OpenAsync();
+
+            using var sqlCommand = new MySqlCommand("sp_UpdateUserData", sqlConnection);
+
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandTimeout = 180;
+            sqlCommand.Parameters.AddWithValue("@par_user_id", userId);
+            sqlCommand.Parameters.AddWithValue("@par_first_name", us.first_name);
+            sqlCommand.Parameters.AddWithValue("@par_last_name", us.last_name);
+            sqlCommand.Parameters.AddWithValue("@par_user_email", us.user_email);
+            sqlCommand.Parameters.AddWithValue("@par_phone_no", us.phone_no);
+            using var reader = await sqlCommand.ExecuteReaderAsync();
+            dt.Load(reader);
+            return dt;
+        }
+
+        public async Task<DataTable> EditUserAddressInfo(UserDataModel us, int userId)
+        {
+            DataTable dt = new DataTable();
+
+            using var sqlConnection = new MySqlConnection(_connectionString);
+            await sqlConnection.OpenAsync();
+
+            using var sqlCommand = new MySqlCommand("sp_UpdateUserData", sqlConnection);
+
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandTimeout = 180;
+            sqlCommand.Parameters.AddWithValue("@par_user_id", userId);
+            sqlCommand.Parameters.AddWithValue("@par_first_name", us.first_name);
+            sqlCommand.Parameters.AddWithValue("@par_last_name", us.last_name);
+            sqlCommand.Parameters.AddWithValue("@par_user_email", us.user_email);
+            sqlCommand.Parameters.AddWithValue("@par_phone_no", us.phone_no);
+            using var reader = await sqlCommand.ExecuteReaderAsync();
+            dt.Load(reader);
+            return dt;
+        }
+
+
     }
 }
