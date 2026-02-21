@@ -40,7 +40,7 @@ namespace UserLogin.Services
             return dt;
         }
 
-        public async Task<DataTable> EditUserBasicInfo(UserDataModel us, int userId)
+        public async Task<DataTable> EditUserBasicInfoToDb(UserDataModel us, int userId)
         {
             DataTable dt = new DataTable();
 
@@ -61,7 +61,7 @@ namespace UserLogin.Services
             return dt;
         }
 
-        public async Task<DataTable> EditUserAddressInfo(UserDataModel us, int userId)
+        public async Task<DataTable> EditUserAddressInfoToDb(UserDataModel us, int userId, int addressId)
         {
             DataTable dt = new DataTable();
 
@@ -73,7 +73,7 @@ namespace UserLogin.Services
             sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.CommandTimeout = 180;
             sqlCommand.Parameters.AddWithValue("@par_user_id", userId);
-            sqlCommand.Parameters.AddWithValue("@par_address_id", userId);
+            sqlCommand.Parameters.AddWithValue("@par_address_id", addressId);
             sqlCommand.Parameters.AddWithValue("@par_line_1", us.user_address.line_1);
             sqlCommand.Parameters.AddWithValue("@par_line_2", us.user_address.line_2);
             sqlCommand.Parameters.AddWithValue("@par_city", us.user_address.city);

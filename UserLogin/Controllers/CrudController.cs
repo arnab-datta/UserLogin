@@ -34,11 +34,11 @@ namespace UserLogin.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> EditUserBasicInfo(UserDataModel us)
+        public async Task<IActionResult> EditUserBasicInfo(int id, UserDataModel us)
         {
             try
             {
-                var result = await _dbService.AddInfoToDb(us);
+                var result = await _dbService.EditUserBasicInfoToDb(us, id);
                 return Ok(_functionalService.ConvertDataTable(result));
 
             }
